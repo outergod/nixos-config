@@ -44,6 +44,8 @@ in
         RemainAfterExit = true;
       };
       wantedBy = [ "default.target" ];
+      after = [ "graphical.target" ];
+      wants = [ "graphical.target" ];
     };
   };
 
@@ -54,5 +56,4 @@ in
     export LV2_PATH=/nix/var/nix/profiles/default/lib/lv2:/var/run/current-system/sw/lib/lv2:~/.lv2
     export DSSI_PATH=/nix/var/nix/profiles/default/lib/dssi:/var/run/current-system/sw/lib/dssi:~/.dssi
   '';
-
 }
