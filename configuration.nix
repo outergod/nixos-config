@@ -18,16 +18,12 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   boot.kernelModules = [ "snd-seq" "snd-rawmidi" "snd-virmidi" ];
-  
-  networking.hostName = "pazuzu"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+  i18n = {
+    consoleFont = "Lat2-Terminus16";
+    consoleKeyMap = "us";
+    defaultLocale = "en_US.UTF-8";
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
