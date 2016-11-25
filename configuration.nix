@@ -17,8 +17,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  boot.kernelModules = [ "snd-seq" "snd-rawmidi" "snd-virmidi" ];
-
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
@@ -44,14 +42,8 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware = {
-    opengl.driSupport32Bit = true;
-  };
-
   programs.zsh.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.akahl = {
     isNormalUser = true;
     uid = 1000;
@@ -59,9 +51,6 @@
     extraGroups = [ "wheel" "audio" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
-
-  # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.09";
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -88,12 +77,5 @@
   };
   
   security.sudo.wheelNeedsPassword = false;
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 18171 ];
-    allowedUDPPorts = [ 18171 ];
-    allowPing = true;
-  };
 }
 
