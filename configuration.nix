@@ -81,6 +81,7 @@
     chromium inconsolata mu gnupg isync libsecret pcsctools
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
     nixui encfs
+    slack
   ];
 
   services.emacs = {
