@@ -9,13 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./host.nix
-      ./audio.nix
     ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -26,23 +20,30 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  networking.networkmanager.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.xkbOptions = "eurosign:e";
-
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
 
+  services.ntp.enable = true;
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs25;
+    defaultEditor = true;
+  };
+
   programs.zsh.enable = true;
+  security.sudo.wheelNeedsPassword = false;
 
   users.extraUsers.akahl = {
     isNormalUser = true;
@@ -64,18 +65,10 @@
   services.pcscd.enable = true;
   
   environment.systemPackages = with pkgs; [
-    chromium inconsolata mu gnupg isync libsecret pcsctools
+    curl wget git gnumake nodejs-6_x owncloud-client
+    chromium mu gnupg isync libsecret pcsctools
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
-    nixui encfs
-    slack
+    nixui slack
   ];
-
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs25;
-    defaultEditor = true;    
-  };
-  
-  security.sudo.wheelNeedsPassword = false;
 }
 

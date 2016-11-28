@@ -1,12 +1,21 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [
+      ./audio.nix
+    ];
+
+  system.stateVersion = "16.09";
   networking.hostName = "pazuzu.in.sodosopa.io";
   
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.driSupport32Bit = true;
 
-  system.stateVersion = "16.09";
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplip ];
+  };
 
   networking.firewall = {
     enable = true;
@@ -14,4 +23,8 @@
     allowedUDPPorts = [ 18171 ];
     allowPing = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    encfs steam
+  ];
 }
