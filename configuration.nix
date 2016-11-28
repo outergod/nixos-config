@@ -63,12 +63,22 @@
   };    
 
   services.pcscd.enable = true;
+
+  fonts = {
+    enableFontDir = true;
+    enableGhostscriptFonts = true;
+    fonts = with pkgs; [
+      corefonts  # Micrsoft free fonts
+      inconsolata  # monospaced
+      unifont # some international languages
+    ];
+  };
   
   environment.systemPackages = with pkgs; [
     curl wget git gnumake nodejs-6_x owncloud-client
-    chromium mu gnupg isync libsecret pcsctools
+    chromium mu gnupg isync libsecret pcsctools pass
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
-    nixui slack
+    nixui slack nssTools
   ];
 }
 
