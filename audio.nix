@@ -12,7 +12,7 @@ in
   boot.kernelModules = [ "snd-seq" "snd-rawmidi" "snd-virmidi" ];
       
   environment.systemPackages = with pkgs; [
-    jack2Full qjackctl swh_lv2 rkrlv2 metersLv2 mda_lv2 lv2 ams-lv2 ardour
+    jack2Full qjackctl swh_lv2 rkrlv2 metersLv2 mda_lv2 lv2 ams-lv2 ardour pavucontrol
   ];
 
   security.pam.loginLimits = [
