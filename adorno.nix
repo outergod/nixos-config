@@ -12,9 +12,13 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   hardware = {
-    pulseaudio.enable = true;
+    pulseaudio = {
+      enable = true;
+      package = pkgs.pulseaudioFull;
+    };
     opengl.driSupport32Bit = true;
     pulseaudio.support32Bit = true;
+    bluetooth.enable = true;
   };
   
   services.xserver.videoDrivers = [ "nvidia" ];
