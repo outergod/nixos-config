@@ -13,6 +13,7 @@ in
       
   environment.systemPackages = with pkgs; [
     jack2Full qjackctl swh_lv2 rkrlv2 metersLv2 mda_lv2 lv2 ams-lv2 ardour pavucontrol
+    hydrogen
   ];
 
   security.pam.loginLimits = [
