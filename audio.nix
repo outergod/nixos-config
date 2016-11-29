@@ -46,8 +46,8 @@ in
         RemainAfterExit = true;
       };
       wantedBy = [ "default.target" ];
-      after = [ "graphical.target" ];
-      wants = [ "graphical.target" ];
+      requires = [ "pulseaudio.service" ];
+      after = [ "pulseaudio.service" ];
     };
   };
 
