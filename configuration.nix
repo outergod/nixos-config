@@ -97,6 +97,8 @@
     chromium mu gnupg isync libsecret pcsctools pass
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
     nixui slack nssTools
+    gnome3.gnome-disk-utility parted
+    libreoffice openjdk gimp
   ];
 }
 
