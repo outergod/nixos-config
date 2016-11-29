@@ -78,7 +78,20 @@
       unifont # some international languages
     ];
   };
-  
+
+  systemd.user.services.gnome-terminal-server = {
+    description = "GNOME Terminal Server";
+
+    serviceConfig = {
+      KillMode = "process";
+      Type = "dbus";
+      BusName = "org.gnome.Terminal";
+      ExecStart = "${pkgs.gnome3.gnome_terminal}/libexec/gnome-terminal-server";
+    };
+    environment = { DISPLAY = ":${toString config.services.xserver.display}"; };
+    restartIfChanged = true;
+  };
+
   environment.systemPackages = with pkgs; [
     curl wget git gnumake nodejs-6_x owncloud-client
     chromium mu gnupg isync libsecret pcsctools pass
