@@ -42,6 +42,11 @@
     defaultEditor = true;
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
+
   programs.zsh.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
