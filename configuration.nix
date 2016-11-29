@@ -24,6 +24,11 @@
 
   # List services that you want to enable:
 
+  services.dbus = {
+    enable = true;
+    socketActivated = true;
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -42,10 +47,10 @@
     defaultEditor = true;
   };
 
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-  };
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns = true;
+  # };
 
   programs.zsh.enable = true;
   security.sudo.wheelNeedsPassword = false;
