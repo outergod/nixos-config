@@ -50,6 +50,16 @@ in
       requires = [ "pulseaudio.service" ];
       after = [ "pulseaudio.service" ];
     };
+
+    supercollider = {
+      description = "Supercollider Server";
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.supercollider}/bin/scsynth -u 57110";
+      };
+      requires = [ "jackdbus.service" ];
+      after = [ "jackdbus.service" ];
+    };
   };
 
   environment.shellInit = ''
