@@ -63,10 +63,10 @@ in
   };
 
   environment.shellInit = ''
-    export VST_PATH=/nix/var/nix/profiles/default/lib/vst:/var/run/current-system/sw/lib/vst:~/.vst
-    export LXVST_PATH=/nix/var/nix/profiles/default/lib/lxvst:/var/run/current-system/sw/lib/lxvst:~/.lxvst
-    export LADSPA_PATH=/nix/var/nix/profiles/default/lib/ladspa:/var/run/current-system/sw/lib/ladspa:~/.ladspa
-    export LV2_PATH=/nix/var/nix/profiles/default/lib/lv2:/var/run/current-system/sw/lib/lv2:~/.lv2
-    export DSSI_PATH=/nix/var/nix/profiles/default/lib/dssi:/var/run/current-system/sw/lib/dssi:~/.dssi
+    export VST_PATH=$NIX_USER_PROFILE_DIR/profile/lib/vst:/var/run/current-system/sw/lib/vst:~/.vst
+    export LXVST_PATH=$NIX_USER_PROFILE_DIR/profile/lib/lxvst:/var/run/current-system/sw/lib/lxvst:~/.lxvst
+    export LADSPA_PATH=$NIX_USER_PROFILE_DIR/profile/lib/ladspa:/var/run/current-system/sw/lib/ladspa:~/.ladspa
+    export LV2_PATH=$NIX_USER_PROFILE_DIR/profile/lib/lv2:/var/run/current-system/sw/lib/lv2:~/.lv2
+    export DSSI_PATH=$NIX_USER_PROFILE_DIR/profile/lib/dssi:/var/run/current-system/sw/lib/dssi:~/.dssi
   '';
 }
