@@ -43,7 +43,10 @@
 
   services.emacs = {
     enable = true;
-    package = pkgs.emacs25;
+    package = pkgs.emacs25.override {
+      withGTK3 = true;
+      withGTK2 = false;
+    };
     defaultEditor = true;
   };
 
