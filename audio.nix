@@ -6,7 +6,7 @@ in
   hardware.pulseaudio = {
     enable = true;
     support32Bit = true; # This might be needed for Steam games
-    package = pkgs.pulseaudioFull;
+    package = pulse;
   };
 
   boot.kernelModules = [ "snd-seq" "snd-rawmidi" "snd-virmidi" ];
