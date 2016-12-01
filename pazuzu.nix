@@ -8,6 +8,7 @@
 
   system.stateVersion = "16.09";
   networking.hostName = "pazuzu.in.sodosopa.io";
+  services.avahi.hostName = "pazuzu";
   
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

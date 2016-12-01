@@ -50,10 +50,13 @@
     defaultEditor = true;
   };
 
-  # services.avahi = {
-  #   enable = true;
-  #   nssmdns = true;
-  # };
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish.enable = true;
+    publish.addresses = true;
+    publish.workstation = true;
+  };
 
   programs.zsh.enable = true;
   security.sudo.wheelNeedsPassword = false;
