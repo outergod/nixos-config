@@ -4,6 +4,26 @@
 
 { config, pkgs, ... }:
 
+let
+  emacsclient = pkgs.writeTextFile {
+    name = "emacsclient";
+    text = ''
+      [Desktop Entry]
+      Name=Emacs Client
+      GenericName=Text Editor
+      Comment=Edit text
+      MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
+      Exec=emacseditor %F
+      Icon=emacs
+      Type=Application
+      Terminal=false
+      Categories=Development;TextEditor;
+      StartupWMClass=Emacs
+      Keywords=Text;Editor;
+    '';
+    destination = "/share/applications/emacsclient.desktop";
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -104,7 +124,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    curl wget git gnumake nodejs-6_x owncloud-client
+    emacsclient curl wget git gnumake nodejs-6_x owncloud-client
     chromium mu gnupg isync libsecret pcsctools pass
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
     nixui slack nssTools
