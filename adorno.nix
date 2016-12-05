@@ -5,7 +5,10 @@
   networking.hostName = "adorno.in.lshift.de";
   services.avahi.hostName = "adorno";
 
-  boot.initrd.postMountCommands = "cryptsetup luksOpen --key-file /mnt-root/root/keyfile /dev/sdb2 swap";
+  boot.initrd.postMountCommands = ''
+    cryptsetup luksOpen --key-file /mnt-root/root/keyfile /dev/sdb2 swap
+    swapon /dev/mapper/swap
+  '';
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
