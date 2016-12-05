@@ -96,6 +96,15 @@ in
       enablePepperFlash = true;
       enablePepperPDF = true;
     };
+
+    packageOverrides = pkgs: {
+      msmtp = pkgs.lib.overrideDerivation pkgs.msmtp (attrs: {
+        nativeBuildInputs = attrs.nativeBuildInputs ++ [ pkgs.libsecret pkgs.glib ];
+        configureFlags = attrs.configureFlags ++ [
+          "--with-libsecret"
+        ];
+      });
+    };
   };    
 
   services.pcscd.enable = true;
@@ -125,7 +134,7 @@ in
 
   environment.systemPackages = with pkgs; [
     emacsclient curl wget git gnumake nodejs-6_x owncloud-client
-    chromium mu gnupg isync libsecret pcsctools pass
+    chromium mu gnupg isync msmtp libsecret pcsctools pass
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
     nixui slack nssTools
     gnome3.gnome-disk-utility parted
