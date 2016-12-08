@@ -4,7 +4,8 @@
   system.stateVersion = "16.09";
   networking.hostName = "adorno.in.lshift.de";
   services.avahi.hostName = "adorno";
-
+  services.avahi.enable = true;
+  
   boot.initrd.postMountCommands = ''
     cryptsetup luksOpen --key-file /mnt-root/root/keyfile /dev/sdb2 swap
     swapon /dev/mapper/swap
