@@ -111,6 +111,7 @@ in
   fonts = {
     enableFontDir = true;
     enableGhostscriptFonts = true;
+    fontconfig.hinting.style = "slight";
     fonts = with pkgs; [
       corefonts  # Micrsoft free fonts
       inconsolata  # monospaced
