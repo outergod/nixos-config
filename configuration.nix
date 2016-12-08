@@ -138,6 +138,7 @@ in
     nixui slack nssTools
     gnome3.gnome-disk-utility parted
     libreoffice openjdk gimp
+    man-pages
   ];
 }
 
