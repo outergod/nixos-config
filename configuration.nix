@@ -137,13 +137,17 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    emacsclient curl wget git gnumake nodejs-6_x owncloud-client
+    emacsclient wmctrl curl wget git gnumake nodejs-6_x owncloud-client
     chromium mu gnupg isync msmtp libsecret pcsctools pass
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
-    nixui slack nssTools
+    nixui nix-repl nox
+    slack nssTools
     gnome3.gnome-disk-utility parted
     libreoffice openjdk gimp
     man-pages
+    ec2_api_tools
+    (texlive.combine {
+      inherit (texlive) scheme-small xetex textpos isodate substr titlesec;
+    })
   ];
 }
-
