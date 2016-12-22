@@ -81,6 +81,7 @@ in
 
   programs.zsh.enable = true;
   security.sudo.wheelNeedsPassword = false;
+  security.pam.makeHomeDir = true;
 
   users.extraUsers.akahl = {
     isNormalUser = true;
