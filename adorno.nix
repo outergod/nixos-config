@@ -99,6 +99,6 @@ lP0=
   };
 
   environment.systemPackages = with pkgs; [
-    steam openssh_with_kerberos awscli bind
+    steam awscli bind
   ];  
 }
