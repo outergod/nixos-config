@@ -53,6 +53,7 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  programs.ssh.package = pkgs.openssh_with_kerberos;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
