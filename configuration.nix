@@ -31,6 +31,8 @@ in
       ./host.nix
     ];
 
+  boot.plymouth.enable = true;
+  
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
