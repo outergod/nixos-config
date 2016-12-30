@@ -1,13 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
     [
       ./audio.nix
+      ./virtualization.nix
+      ./nixos-development.nix
     ];
 
   system.stateVersion = "16.09";
   networking.hostName = "pazuzu.in.sodosopa.io";
+  services.avahi.hostName = "pazuzu";
+  services.avahi.enable = false;
   
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -19,7 +23,6 @@
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplip ];
   };
 
   networking.firewall = {
@@ -32,4 +35,16 @@
   environment.systemPackages = with pkgs; [
     encfs steam
   ];
+
+  ipa = {
+    enable = true;
+    domain = "in.sodosopa.io";
+    realm  = "IN.SODOSOPA.IO";
+    server = "ipa.in.sodosopa.io";
+    basedn = "dc=in,dc=sodosopa,dc=io";
+  };
+  
+  services.sssd.enable = true;
+
+  networking.extraHosts = "192.168.122.2 ipa.in.sodosopa.io";
 }

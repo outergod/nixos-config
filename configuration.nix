@@ -82,7 +82,6 @@ in
 
   programs.zsh.enable = true;
   security.sudo.wheelNeedsPassword = false;
-  security.pam.makeHomeDir = true;
 
   users.extraUsers.akahl = {
     isNormalUser = true;
@@ -98,6 +97,7 @@ in
     chromium = {
       enablePepperFlash = true;
       enablePepperPDF = true;
+      #enableWideVine = true; # Netflix
     };
 
     packageOverrides = pkgs: {
@@ -107,7 +107,13 @@ in
           "--with-libsecret"
         ];
       });
+      # chromium = pkgs.chromium.override {
+      #   gnomeSupport = true;
+      #   gnomeKeyringSupport = true;
+      # };
     };
+
+    # replaceStdenv = { pkgs }: pkgs.ccacheStdenv;
   };    
 
   services.pcscd.enable = true;
@@ -137,17 +143,14 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    emacsclient wmctrl curl wget git gnumake nodejs-6_x owncloud-client
-    chromium mu gnupg isync msmtp libsecret pcsctools pass
+    emacsclient chromium wmctrl curlFull wget git gnumake nodejs-6_x owncloud-client
+    mu gnupg isync msmtp libsecret pcsctools pass
     yubikey-neo-manager yubikey-personalization-gui yubikey-personalization
     nixui nix-repl nox
     slack nssTools
     gnome3.gnome-disk-utility parted
-    libreoffice openjdk gimp
+    openjdk gimp
     man-pages
     ec2_api_tools
-    (texlive.combine {
-      inherit (texlive) scheme-small xetex textpos isodate substr titlesec;
-    })
   ];
 }
