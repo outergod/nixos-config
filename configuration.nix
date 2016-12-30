@@ -111,9 +111,9 @@ in
       #   gnomeSupport = true;
       #   gnomeKeyringSupport = true;
       # };
+      mplayer = pkgs.mplayer.override { pulseSupport = true; };
     };
 
-    # replaceStdenv = { pkgs }: pkgs.ccacheStdenv;
   };    
 
   services.pcscd.enable = true;
@@ -152,5 +152,8 @@ in
     openjdk gimp
     man-pages
     ec2_api_tools
+    (texlive.combine {
+      inherit (texlive) scheme-small xetex textpos isodate substr titlesec;
+    })
   ];
 }
