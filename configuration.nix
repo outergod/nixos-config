@@ -150,6 +150,7 @@ in
     slack nssTools
     gnome3.gnome-disk-utility parted
     openjdk gimp
+    libreoffice
     man-pages
     ec2_api_tools
     (texlive.combine {
