@@ -157,10 +157,12 @@ in
     slack nssTools
     gnome3.gnome-disk-utility parted
     openjdk gimp
+    libreoffice
     man-pages
     ec2_api_tools
     (texlive.combine {
       inherit (texlive) scheme-small xetex textpos isodate substr titlesec;
     })
+    gtk # https://github.com/NixOS/nixpkgs/issues/20874
   ];
 }
