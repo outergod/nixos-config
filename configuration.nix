@@ -142,6 +142,13 @@ in
     restartIfChanged = true;
   };
 
+  users.extraUsers.sysadmin = {
+    isNormalUser = false;
+    home = "/home/sysadmin";
+    description = "System Maintenance User";
+    extraGroups = [ "wheel" ];
+  };
+  
   environment.systemPackages = with pkgs; [
     emacsclient chromium wmctrl curlFull wget git gnumake nodejs-6_x owncloud-client
     mu gnupg isync msmtp libsecret pcsctools pass
