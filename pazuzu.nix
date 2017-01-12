@@ -46,5 +46,8 @@
   
   services.sssd.enable = true;
 
-  networking.extraHosts = "192.168.122.2 ipa.in.sodosopa.io";
+  services.postgresql = {
+    enable = true;
+    authentication = "host  all all 127.0.0.1/32 trust";
+  };
 }
