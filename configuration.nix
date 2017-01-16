@@ -165,5 +165,6 @@ in
     })
     gtk # https://github.com/NixOS/nixpkgs/issues/20874
     networkmanagerapplet
+    file
   ];
 }
