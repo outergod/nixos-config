@@ -36,15 +36,17 @@
     encfs steam
   ];
 
-  ipa = {
-    enable = true;
-    domain = "in.sodosopa.io";
-    realm  = "IN.SODOSOPA.IO";
-    server = "ipa.in.sodosopa.io";
-    basedn = "dc=in,dc=sodosopa,dc=io";
-  };
+  # ipa = {
+  #   enable = true;
+  #   domain = "in.sodosopa.io";
+  #   realm  = "IN.SODOSOPA.IO";
+  #   server = "ipa.in.sodosopa.io";
+  #   basedn = "dc=in,dc=sodosopa,dc=io";
+  # };
   
-  services.sssd.enable = true;
+  # services.sssd.enable = true;
+
+  # networking.extraHosts = "192.168.122.2 ipa.in.sodosopa.io";
 
   services.postgresql = {
     enable = true;
