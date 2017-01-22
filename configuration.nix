@@ -163,6 +163,9 @@ in
     (texlive.combine {
       inherit (texlive) scheme-small xetex textpos isodate substr titlesec;
     })
-    gtk # https://github.com/NixOS/nixpkgs/issues/20874
+    gtk2 # https://github.com/NixOS/nixpkgs/issues/20874
+    networkmanagerapplet
+    file
+    unzip
   ];
 }
