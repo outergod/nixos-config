@@ -156,7 +156,7 @@ in
     nixui nix-repl nox
     slack nssTools
     gnome3.gnome-disk-utility parted
-    openjdk gimp
+    openjdk gimp inkscape
     libreoffice
     man-pages
     ec2_api_tools
@@ -167,5 +167,6 @@ in
     networkmanagerapplet
     file
     unzip
+    discord
   ];
 }
