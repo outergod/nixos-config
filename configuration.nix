@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, emacs-overlay, ... }:
+{ config, lib, pkgs, emacs-overlay, zen-browser, ... }:
 
 {
   imports =
@@ -179,6 +179,8 @@
       dunst kitty hyprpaper hyprcursor eww waybar xwaylandvideobridge libnotify waypaper swww 
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
+      zen-browser.packages."${system}".specific
+      gnome3.gnome-tweaks
       (catppuccin-sddm.override {
         flavor = "mocha";
       })
