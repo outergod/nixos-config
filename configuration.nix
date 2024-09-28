@@ -11,6 +11,8 @@
     ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -85,7 +87,7 @@
   security = {
     sudo.wheelNeedsPassword = false;
     polkit.enable = true;
-    pam.services.sddm.enableGnomeKeyring = true;
+    pam.services.gdm.enableGnomeKeyring = true;
   };
 
   nixpkgs = {
@@ -122,8 +124,8 @@
     # Enable the X11 windowing system.
     xserver.enable = true;
 
-    # xserver.displayManager.gdm.enable = true;
-    xserver.desktopManager.gnome.enable = true;
+    xserver.displayManager.gdm.enable = true;
+    # xserver.desktopManager.gnome.enable = true;
 
     # greetd = {
     #   enable = true;
@@ -133,13 +135,13 @@
     #   # };
     # };
 
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      enableHidpi = true;
-      theme = "catppuccin-mocha";
-      package = pkgs.kdePackages.sddm;
-    };
+    # displayManager.sddm = {
+    #   enable = true;
+    #   wayland.enable = true;
+    #   enableHidpi = true;
+    #   theme = "catppuccin-mocha";
+    #   package = pkgs.kdePackages.sddm;
+    # };
 
     # Enable CUPS to print documents.
     printing.enable = true;
@@ -174,16 +176,12 @@
 
   environment = {
     systemPackages = with pkgs; [ 
-      vim direnv jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret
+      vim direnv jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol
       nodePackages.prettier imagemagick
-      dunst kitty hyprpaper hyprcursor eww waybar xwaylandvideobridge libnotify waypaper swww 
+      dunst alacritty hyprpaper hyprcursor eww waybar xwaylandvideobridge libnotify waypaper swww shotwell
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific
-      gnome3.gnome-tweaks
-      (catppuccin-sddm.override {
-        flavor = "mocha";
-      })
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
