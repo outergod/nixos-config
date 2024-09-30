@@ -5,11 +5,6 @@
 { config, lib, pkgs, emacs-overlay, zen-browser, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   boot = {
     loader = {
       systemd-boot.enable = true;
