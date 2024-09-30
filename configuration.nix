@@ -87,6 +87,11 @@
   };
 
   programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -166,12 +171,14 @@
 
   environment = {
     systemPackages = with pkgs; [ 
-      vim direnv jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol
+      vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol
+      inxi pciutils lshw hwinfo usbutils
       nodePackages.prettier imagemagick
       dunst alacritty hyprpaper hyprcursor eww waybar xwaylandvideobridge libnotify waypaper swww shotwell
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific
+      synology-drive-client
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
