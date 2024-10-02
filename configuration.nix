@@ -143,6 +143,7 @@
       enable = true;
       pulse.enable = true;
       wireplumber.enable = true;
+      alsa.enable = true;
     };
 
     emacs = {
@@ -173,7 +174,7 @@
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific
-      synology-drive-client
+      synology-drive-client zapzap
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
