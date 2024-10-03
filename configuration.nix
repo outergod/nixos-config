@@ -151,6 +151,7 @@
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific
       synology-drive-client zapzap
+      gnome.gnome-font-viewer
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
