@@ -168,7 +168,7 @@
   environment = {
     systemPackages = with pkgs; [ 
       vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol unzip bc
-      inxi pciutils lshw hwinfo usbutils
+      inxi pciutils lshw hwinfo usbutils udiskie
       nodePackages.prettier imagemagick
       dunst alacritty hyprpaper hyprcursor eww waybar xwaylandvideobridge libnotify waypaper swww shotwell
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
