@@ -167,7 +167,7 @@
 
   environment = {
     systemPackages = with pkgs; [ 
-      vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol
+      vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol unzip bc
       inxi pciutils lshw hwinfo usbutils
       nodePackages.prettier imagemagick
       dunst alacritty hyprpaper hyprcursor eww waybar xwaylandvideobridge libnotify waypaper swww shotwell
