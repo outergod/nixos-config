@@ -111,33 +111,15 @@
 
   # List services that you want to enable:
   services = {
-    # Enable the X11 windowing system.
     xserver.enable = true;
 
     xserver.displayManager.gdm.enable = true;
-    # xserver.desktopManager.gnome.enable = true;
-
-    # greetd = {
-    #   enable = true;
-    #   restart = true;
-    #   # settigs.default_session = {
-    #   #   command = "cage -s -- regreet";
-    #   # };
-    # };
-
-    # displayManager.sddm = {
-    #   enable = true;
-    #   wayland.enable = true;
-    #   enableHidpi = true;
-    #   theme = "catppuccin-mocha";
-    #   package = pkgs.kdePackages.sddm;
-    # };
-
-    # Enable CUPS to print documents.
     printing.enable = true;
-
-    # Enable the OpenSSH daemon.
     openssh.enable = true;
+    udisks2.enable = true;
+    flatpak.enable = true;
+    hypridle.enable = true;
+    gnome.gnome-keyring.enable = true;
 
     pipewire = {
       enable = true;
@@ -155,12 +137,6 @@
         )
       );
     };
-
-    flatpak.enable = true;
-
-    hypridle.enable = true;
-
-    gnome.gnome-keyring.enable = true;
   };
 
   networking.firewall.enable = false;
