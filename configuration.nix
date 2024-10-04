@@ -107,6 +107,8 @@
       enable = true;
       gamescopeSession.enable = true;
     };
+
+    gnome-disks.enable = true;
   };
 
   # List services that you want to enable:
@@ -144,14 +146,14 @@
   environment = {
     systemPackages = with pkgs; [ 
       vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol unzip bc
-      inxi pciutils lshw hwinfo usbutils udiskie
+      inxi pciutils lshw hwinfo usbutils udiskie encfs
       nodePackages.prettier imagemagick
-      dunst alacritty hyprpaper hyprcursor eww waybar xwaylandvideobridge libnotify waypaper swww shotwell
+      dunst alacritty hyprpaper hyprcursor waybar xwaylandvideobridge libnotify waypaper swww shotwell
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific
       synology-drive-client zapzap
-      gnome.gnome-font-viewer
+      gnome.gnome-font-viewer polkit_gnome
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
