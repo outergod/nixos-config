@@ -56,7 +56,7 @@
       rocmPackages.clr.icd
     ];
   };
- 
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.outergod = {
     description = "Alexander Dorn";
@@ -94,7 +94,7 @@
 
     seahorse.enable = true;
 
-    zsh.enable = true; 
+    zsh.enable = true;
 
     hyprland.enable = true;
     hyprlock.enable = true;
@@ -109,6 +109,7 @@
     };
 
     gnome-disks.enable = true;
+
   };
 
   # List services that you want to enable:
@@ -122,6 +123,8 @@
     flatpak.enable = true;
     hypridle.enable = true;
     gnome.gnome-keyring.enable = true;
+    gvfs.enable = true;
+    gnome.sushi.enable = true;
 
     pipewire = {
       enable = true;
@@ -139,23 +142,37 @@
         )
       );
     };
+
+    tor = {
+      enable = true;
+      client.enable = true;
+      settings = {
+        UseBridges = true;
+        ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
+        Bridge = "obfs4 159.253.120.121:443 37AAAA91E8A34BFAEF3E3753C71996371A5F2735 cert=zxrBDwpyFNNMxcFZrkP12PD9PCKMxDsDg3aL7XJMlG+R9bVfafBY4Y07PVmuLHNeODr7cw iat-mode=0";
+      };
+    };
   };
 
   networking.firewall.enable = false;
 
   environment = {
-    systemPackages = with pkgs; [ 
+    systemPackages = with pkgs; [
       vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol unzip bc
       inxi pciutils lshw hwinfo usbutils udiskie encfs
       nodePackages.prettier imagemagick
       dunst alacritty hyprpaper hyprcursor waybar xwaylandvideobridge libnotify waypaper swww shotwell
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
-      zen-browser.packages."${system}".specific
+      zen-browser.packages."${system}".specific tor-browser
       synology-drive-client zapzap
-      gnome.gnome-font-viewer polkit_gnome
+      gnome.gnome-font-viewer polkit_gnome gnome.nautilus
+      mpv celluloid ffmpegthumbnailer
+      unrar
+      libheif libheif.out
       activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
     ];
+    pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
