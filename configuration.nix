@@ -154,6 +154,7 @@
       zen-browser.packages."${system}".specific
       synology-drive-client zapzap
       gnome.gnome-font-viewer polkit_gnome
+      activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
