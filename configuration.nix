@@ -109,7 +109,6 @@
     };
 
     gnome-disks.enable = true;
-
   };
 
   # List services that you want to enable:
@@ -158,7 +157,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol unzip bc
+      vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol unzip bc cargo p7zip file john hashcat
       inxi pciutils lshw hwinfo usbutils udiskie encfs
       nodePackages.prettier imagemagick
       dunst alacritty hyprpaper hyprcursor waybar xwaylandvideobridge libnotify waypaper swww shotwell
@@ -167,7 +166,7 @@
       zen-browser.packages."${system}".specific tor-browser
       synology-drive-client zapzap
       gnome.gnome-font-viewer polkit_gnome gnome.nautilus
-      mpv celluloid ffmpegthumbnailer
+      mpv celluloid ffmpegthumbnailer audacity
       unrar
       libheif libheif.out
       activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
