@@ -164,12 +164,13 @@
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific tor-browser
-      synology-drive-client zapzap
+      synology-drive-client zapzap lutris protonup-qt
       gnome.gnome-font-viewer polkit_gnome gnome.nautilus
       mpv celluloid ffmpegthumbnailer audacity
       unrar
       libheif libheif.out
       activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
+      rust-analyzer
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
