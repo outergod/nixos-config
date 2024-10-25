@@ -146,9 +146,7 @@
       enable = true;
       client.enable = true;
       settings = {
-        UseBridges = true;
-        ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
-        Bridge = "obfs4 159.253.120.121:443 37AAAA91E8A34BFAEF3E3753C71996371A5F2735 cert=zxrBDwpyFNNMxcFZrkP12PD9PCKMxDsDg3aL7XJMlG+R9bVfafBY4Y07PVmuLHNeODr7cw iat-mode=0";
+        UseBridges = false;
       };
     };
   };
@@ -164,7 +162,7 @@
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific tor-browser
-      synology-drive-client zapzap lutris protonup-qt
+      synology-drive-client zapzap protonup-qt lutris dosbox
       gnome.gnome-font-viewer polkit_gnome gnome.nautilus
       mpv celluloid ffmpegthumbnailer audacity
       unrar
