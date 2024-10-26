@@ -171,6 +171,7 @@
       libheif libheif.out
       activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
       rust-analyzer
+      inkscape
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
@@ -180,7 +181,7 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "Noto" ]; })
     roboto
   ];
 
