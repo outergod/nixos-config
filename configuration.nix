@@ -36,15 +36,19 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd
+      ];
+    };
+
+    keyboard.qmk.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -136,7 +140,9 @@
       enable = true;
       client.enable = true;
       settings = {
-        UseBridges = false;
+        UseBridges = true;
+        ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
+        Bridge = "obfs4 212.236.8.35:993 7933E224A4343AF464164D3F39017F94DFB8B921 cert=U6dV3vCY6MDpqMrLwMNn978uLqljUC3eLqJQcrv/FHMNAPrHoIHVGAzfIlSdKuvrDZXUag iat-mode=0";
       };
     };
 
@@ -212,6 +218,7 @@
       rust-analyzer
       inkscape
       cifs-utils
+      qmk
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
