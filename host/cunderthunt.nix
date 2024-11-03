@@ -12,6 +12,17 @@
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/40ad8ddb-a4c7-4c26-a0ef-474290d94b12";
+
+    plymouth = {
+      enable = true;
+      theme = "deus_ex";
+      themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "deus_ex" ];
+        })
+      ];
+    };
+
   };
 
   networking = {

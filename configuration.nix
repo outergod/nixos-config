@@ -12,16 +12,6 @@
       timeout = 0;
     };
 
-    plymouth = {
-      enable = true;
-      theme = "deus_ex";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "deus_ex" ];
-        })
-      ];
-    };
-
     # Enable "Silent Boot"
     consoleLogLevel = 0;
     initrd.verbose = false;
@@ -149,9 +139,60 @@
         UseBridges = false;
       };
     };
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        domain = true;
+        hinfo = true;
+        userServices = true;
+        workstation = true;
+      };
+      extraServiceFiles = {
+        smb = ''
+          <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+          <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+          <service-group>
+            <name replace-wildcards="yes">%h</name>
+            <service>
+              <type>_smb._tcp</type>
+              <port>445</port>
+            </service>
+          </service-group>
+        '';
+      };
+    };
+
+    samba = {
+      enable = true;
+
+      # You will still need to set up the user accounts to begin with:
+      # $ sudo smbpasswd -a yourusername
+
+      # This adds to the [global] section:
+      extraConfig = ''
+        browseable = yes
+        smb encrypt = required
+      '';
+
+      shares = {
+        homes = {
+          browseable = "yes";  # note: each home will be browseable; the "homes" share will not.
+          "read only" = "no";
+          "guest ok" = "no";
+        };
+      };
+    };
   };
 
-  networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 445 139 22 ];
+    allowedUDPPorts = [ 137 138 ];
+  };
 
   environment = {
     systemPackages = with pkgs; [
@@ -170,6 +211,7 @@
       activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
       rust-analyzer
       inkscape
+      cifs-utils
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";

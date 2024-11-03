@@ -11,6 +11,11 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     initrd.luks.devices."enc".device = "/dev/disk/by-uuid/b7b3556d-6a96-413d-a408-be0cd664b4a8";
+
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+    };
   };
 
   networking = {
