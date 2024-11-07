@@ -95,7 +95,11 @@
 
     gamescope = {
       enable = true;
-      capSysNice = true;
+      capSysNice = false;
+    };
+    gamemode = {
+      enable = true;
+      enableRenice = true;
     };
     steam = {
       enable = true;
