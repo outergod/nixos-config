@@ -221,7 +221,7 @@
       activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
       rust-analyzer
       inkscape
-      cifs-utils
+      cifs-utils dig
       qmk
     ];
     pathsToLink = [ "share/thumbnailers" ];
