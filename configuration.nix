@@ -223,6 +223,11 @@
       inkscape
       cifs-utils dig
       qmk
+      (pkgs.wrapOBS {
+        plugins = with obs-studio-plugins; [
+          wlrobs obs-vkcapture input-overlay
+        ];
+      })
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
