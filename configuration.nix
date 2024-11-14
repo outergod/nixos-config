@@ -146,7 +146,7 @@
       settings = {
         UseBridges = true;
         ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
-        Bridge = "obfs4 212.236.8.35:993 7933E224A4343AF464164D3F39017F94DFB8B921 cert=U6dV3vCY6MDpqMrLwMNn978uLqljUC3eLqJQcrv/FHMNAPrHoIHVGAzfIlSdKuvrDZXUag iat-mode=0";
+        Bridge = "obfs4 78.199.154.217:34161 29C8E90E8FEBB7F5F67C4364224FBF4747DFA0A6 cert=xjmoErJgpqn0jDBVsnjCm29/KDuQ4HBqulQpxRYqDBswI66i3YEDH/Zk8hk6Kw4yOP3cPQ iat-mode=0";
       };
     };
 
