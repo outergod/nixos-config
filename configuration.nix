@@ -198,6 +198,16 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+    wlr.enable = true;
+  };
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 445 139 22 ];
@@ -213,10 +223,10 @@
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific tor-browser
-      synology-drive-client zapzap protonup-qt lutris dosbox
+      synology-drive-client zapzap lutris dosbox protonplus
       gnome.gnome-font-viewer polkit_gnome gnome.nautilus
-      mpv celluloid ffmpegthumbnailer audacity
-      unrar
+      mpv celluloid ffmpegthumbnailer audacity picard
+      unrar insync
       libheif libheif.out
       activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
       rust-analyzer
@@ -228,6 +238,7 @@
           wlrobs obs-vkcapture input-overlay
         ];
       })
+      (haskellPackages.ghcWithPackages (pkgs: with pkgs; [ cabal-install ]))
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
