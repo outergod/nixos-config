@@ -7,8 +7,8 @@
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" "i915" ];
+    initrd.kernelModules = [ "i915" ];
+    kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     initrd.luks.devices."enc".device = "/dev/disk/by-uuid/b7b3556d-6a96-413d-a408-be0cd664b4a8";
 
