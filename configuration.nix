@@ -30,6 +30,8 @@
     kernel.sysctl = { "vm.swappiness" = 10; };
   };
 
+  console.keyMap = "dvorak";
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -111,9 +113,16 @@
 
   # List services that you want to enable:
   services = {
-    xserver.enable = true;
+    xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      xkb = {
+        layout = "us";
+        variant = "dvorak";
+      };
+    };
 
-    xserver.displayManager.gdm.enable = true;
+    tailscale.enable = true;
     printing.enable = true;
     openssh.enable = true;
     udisks2.enable = true;
