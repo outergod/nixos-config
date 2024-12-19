@@ -5,6 +5,10 @@
 { config, lib, pkgs, emacs-overlay, zen-browser, ... }:
 
 {
+  imports = [
+    ./local.nix
+  ];
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -30,7 +34,7 @@
     kernel.sysctl = { "vm.swappiness" = 10; };
   };
 
-  console.keyMap = "dvorak";
+  console.keyMap = "us";
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -41,10 +45,9 @@
   hardware = {
     pulseaudio.enable = false;
 
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         rocmPackages.clr.icd
       ];
@@ -92,7 +95,12 @@
 
     zsh.enable = true;
 
-    hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+    };
+
     hyprlock.enable = true;
 
     gamescope = {
@@ -116,9 +124,9 @@
     xserver = {
       enable = true;
       displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
-        variant = "dvorak";
       };
     };
 
@@ -147,16 +155,6 @@
           epkgs: [ epkgs.vterm ]
         )
       );
-    };
-
-    tor = {
-      enable = true;
-      client.enable = true;
-      settings = {
-        UseBridges = true;
-        ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
-        Bridge = "obfs4 212.236.8.35:993 7933E224A4343AF464164D3F39017F94DFB8B921 cert=U6dV3vCY6MDpqMrLwMNn978uLqljUC3eLqJQcrv/FHMNAPrHoIHVGAzfIlSdKuvrDZXUag iat-mode=0";
-      };
     };
 
     avahi = {
@@ -191,13 +189,12 @@
       # You will still need to set up the user accounts to begin with:
       # $ sudo smbpasswd -a yourusername
 
-      # This adds to the [global] section:
-      extraConfig = ''
-        browseable = yes
-        smb encrypt = required
-      '';
+      settings = {
+        global = {
+          browseable = "yes";
+          "smb encrypt" = "required";
+        };
 
-      shares = {
         homes = {
           browseable = "yes";  # note: each home will be browseable; the "homes" share will not.
           "read only" = "no";
@@ -233,11 +230,10 @@
       webcord-vencord bitwarden librewolf
       zen-browser.packages."${system}".specific tor-browser
       synology-drive-client zapzap lutris dosbox protonplus
-      gnome.gnome-font-viewer polkit_gnome gnome.nautilus
-      mpv celluloid ffmpegthumbnailer audacity picard
+      gnome-font-viewer polkit_gnome nautilus
+      mpv celluloid ffmpegthumbnailer audacity picard spotify
       unrar insync
       libheif libheif.out
-      activitywatch aw-server-rust aw-qt aw-watcher-afk aw-watcher-window-wayland
       rust-analyzer
       inkscape
       cifs-utils dig
@@ -247,7 +243,8 @@
           wlrobs obs-vkcapture input-overlay
         ];
       })
-      (haskellPackages.ghcWithPackages (pkgs: with pkgs; [ cabal-install ]))
+      doomrunner gzdoom
+      aoc-cli
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
@@ -255,7 +252,7 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     (nerdfonts.override { fonts = [ "FiraCode" "Noto" "NerdFontsSymbolsOnly" ]; })
     roboto

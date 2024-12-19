@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };

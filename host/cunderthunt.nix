@@ -25,6 +25,8 @@
 
   };
 
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   networking = {
     hostName = "cunderthunt";
     networkmanager.enable = true;
