@@ -117,6 +117,7 @@
     };
 
     gnome-disks.enable = true;
+    nix-ld.enable = true;
   };
 
   # List services that you want to enable:
