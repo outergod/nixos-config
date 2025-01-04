@@ -56,11 +56,10 @@
     keyboard.qmk.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.outergod = {
     description = "Alexander Dorn";
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "wireshark" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
@@ -118,6 +117,7 @@
 
     gnome-disks.enable = true;
     nix-ld.enable = true;
+    wireshark.enable = true;
   };
 
   # List services that you want to enable:
@@ -219,6 +219,7 @@
     enable = true;
     allowedTCPPorts = [ 445 139 22 ];
     allowedUDPPorts = [ 137 138 ];
+    checkReversePath = "loose";
   };
 
   environment = {
@@ -237,6 +238,7 @@
       libheif libheif.out
       rust-analyzer
       inkscape
+      (flameshot.override { enableWlrSupport = true; })
       cifs-utils dig
       qmk
       (pkgs.wrapOBS {
@@ -244,8 +246,9 @@
           wlrobs obs-vkcapture input-overlay
         ];
       })
-      doomrunner gzdoom
+      doomrunner gzdoom mangohud
       aoc-cli
+      wireshark
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
