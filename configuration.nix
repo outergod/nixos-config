@@ -44,16 +44,6 @@
 
   hardware = {
     pulseaudio.enable = false;
-
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        rocmPackages.clr.icd
-      ];
-    };
-
-    keyboard.qmk.enable = true;
   };
 
   users.users.outergod = {
@@ -74,7 +64,10 @@
   };
 
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
+    };
 
     overlays = [ emacs-overlay.overlays.default ];
   };
@@ -224,16 +217,17 @@
 
   environment = {
     systemPackages = with pkgs; [
-      vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch pavucontrol unzip bc cargo p7zip file john hashcat
-      inxi pciutils lshw hwinfo usbutils udiskie encfs
+      vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch unzip bc cargo p7zip file john hashcat
+      inxi pciutils lshw hwinfo usbutils udiskie encfs vulkan-tools
+      (ventoy-full.override { defaultGuiType = "gtk3"; })
       nodePackages.prettier imagemagick
-      dunst alacritty hyprpaper hyprcursor waybar xwaylandvideobridge libnotify waypaper swww shotwell
+      dunst alacritty hyprpaper hyprcursor waybar libnotify waypaper swww shotwell
       rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
-      webcord-vencord bitwarden librewolf
-      zen-browser.packages."${system}".specific tor-browser
+      webcord-vencord bitwarden
+      zen-browser.packages."${system}".default tor-browser brave
       synology-drive-client zapzap lutris dosbox protonplus
       gnome-font-viewer polkit_gnome nautilus
-      mpv celluloid ffmpegthumbnailer audacity picard spotify
+      mpv celluloid ffmpegthumbnailer audacity picard spotify audacious ffmpeg-full pavucontrol asunder makemkv
       unrar insync
       libheif libheif.out
       rust-analyzer
@@ -266,10 +260,15 @@
     substituters = [
       "https://cache.nixos.org/"
       "https://nix-community.cachix.org"
+      "https://ai.cachix.org"
+      # "https://cuda-maintainers.cachix.org"
+      # "https://numtide.cachix.org"
     ];
-
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
+      # "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      # "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0do"
     ];
 
     experimental-features = [ "nix-command" "flakes" ];

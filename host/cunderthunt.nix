@@ -25,7 +25,14 @@
 
   };
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services = {
+    xserver.videoDrivers = [ "amdgpu" ];
+
+    # comfyui = {
+    #   enable = true;
+    #   acceleration = "rocm";
+    # };
+  };
 
   networking = {
     hostName = "cunderthunt";
@@ -59,8 +66,19 @@
 
   swapDevices = [ ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  hardware = {
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd
+      ];
+    };
+
+    keyboard.qmk.enable = true;
+  };
   environment = {
     systemPackages = with pkgs; [
       blender-hip
