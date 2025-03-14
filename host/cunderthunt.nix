@@ -9,7 +9,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
     initrd.kernelModules = [ "amdgpu"];
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ "kvm-amd" "sg" ];
     extraModulePackages = [ ];
     initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/40ad8ddb-a4c7-4c26-a0ef-474290d94b12";
 

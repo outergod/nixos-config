@@ -4,6 +4,13 @@
 
 { config, lib, pkgs, emacs-overlay, zen-browser, ... }:
 
+let
+  usb-storage-pkg = pkgs.writeTextFile {
+    name = "usb-storage-pkg";
+    text = builtins.readFile ./60-persistent-storage.rules;
+    destination = "/etc/udev/rules.d/60-persistent-storage.rules";
+  };
+in
 {
   imports = [
     ./local.nix
@@ -196,6 +203,8 @@
         };
       };
     };
+
+    udev.packages = [ usb-storage-pkg ];
   };
 
   xdg.portal = {
@@ -231,7 +240,7 @@
       unrar insync
       libheif libheif.out
       rust-analyzer
-      inkscape
+      inkscape gimp krita
       (flameshot.override { enableWlrSupport = true; })
       cifs-utils dig
       qmk
