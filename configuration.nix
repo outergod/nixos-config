@@ -249,7 +249,7 @@ in
           wlrobs obs-vkcapture input-overlay
         ];
       })
-      doomrunner gzdoom mangohud
+      doomrunner gzdoom mangohud lime3ds melonDS unstable.retroarchFull
       aoc-cli
       wireshark
     ];
