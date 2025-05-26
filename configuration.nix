@@ -152,7 +152,7 @@ in
       enable = true;
       defaultEditor = true;
       package = with pkgs; (
-        (emacsPackagesFor emacs-pgtk).emacsWithPackages (
+        (emacsPackagesFor emacs-git-pgtk).emacsWithPackages (
           epkgs: [ epkgs.vterm ]
         )
       );
@@ -236,20 +236,20 @@ in
       zen-browser.packages."${system}".default tor-browser brave
       synology-drive-client zapzap lutris dosbox protonplus
       gnome-font-viewer polkit_gnome nautilus
-      mpv celluloid ffmpegthumbnailer audacity picard spotify audacious ffmpeg-full pavucontrol asunder makemkv
+      mpv celluloid ffmpegthumbnailer audacity picard spotify audacious ffmpeg-full pavucontrol asunder makemkv yt-dlp
       unrar insync
       libheif libheif.out
       rust-analyzer
-      inkscape gimp krita
+      inkscape unstable.gimp3-with-plugins krita
       (flameshot.override { enableWlrSupport = true; })
       cifs-utils dig
-      qmk
+      qmk rpi-imager
       (pkgs.wrapOBS {
         plugins = with obs-studio-plugins; [
           wlrobs obs-vkcapture input-overlay
         ];
       })
-      doomrunner gzdoom mangohud lime3ds melonDS unstable.retroarchFull
+      doomrunner unstable.gzdoom mangohud lime3ds melonDS unstable.retroarchFull prismlauncher
       aoc-cli
       wireshark
     ];
