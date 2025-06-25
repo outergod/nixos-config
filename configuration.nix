@@ -49,10 +49,6 @@ in
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware = {
-    pulseaudio.enable = false;
-  };
-
   users.users.outergod = {
     description = "Alexander Dorn";
     isNormalUser = true;
@@ -74,6 +70,9 @@ in
     config = {
       allowUnfree = true;
       allowBroken = true;
+      permittedInsecurePackages = [
+        "ventoy-gtk3-1.1.05"
+      ];
     };
 
     overlays = [ emacs-overlay.overlays.default ];
@@ -131,6 +130,7 @@ in
       };
     };
 
+    pulseaudio.enable = false;
     tailscale.enable = true;
     printing.enable = true;
     openssh.enable = true;
@@ -242,14 +242,14 @@ in
       rust-analyzer
       inkscape unstable.gimp3-with-plugins krita
       (flameshot.override { enableWlrSupport = true; })
-      cifs-utils dig
+      cifs-utils dig butane
       qmk rpi-imager
       (pkgs.wrapOBS {
         plugins = with obs-studio-plugins; [
           wlrobs obs-vkcapture input-overlay
         ];
       })
-      doomrunner unstable.gzdoom mangohud lime3ds melonDS unstable.retroarchFull prismlauncher
+      doomrunner unstable.gzdoom mangohud azahar melonDS unstable.retroarchFull prismlauncher
       aoc-cli
       wireshark
     ];
@@ -257,11 +257,11 @@ in
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
-  fonts.packages = with pkgs; [
+  fonts.packages = with pkgs; with nerd-fonts; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "FiraCode" "Noto" "NerdFontsSymbolsOnly" ]; })
+    fira-code noto-fonts symbols-only
     roboto
   ];
 
