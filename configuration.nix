@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, emacs-overlay, zen-browser, ... }:
+{ config, lib, pkgs, emacs-overlay, zen-browser, hyprland, ... }:
 
 let
   usb-storage-pkg = pkgs.writeTextFile {
@@ -95,6 +95,10 @@ in
 
     hyprland = {
       enable = true;
+      # set the flake package
+      package = hyprland.packages.${pkgs.system}.hyprland;
+      # make sure to also set the portal package, so that they are in sync
+      portalPackage = hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
       withUWSM = true;
       xwayland.enable = true;
     };
@@ -272,15 +276,17 @@ in
 
   nix.settings = {
     substituters = [
-      "https://cache.nixos.org/"
+      "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://ai.cachix.org"
+      "https://hyprland.cachix.org"
       # "https://cuda-maintainers.cachix.org"
       # "https://numtide.cachix.org"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       # "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       # "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0do"
     ];
