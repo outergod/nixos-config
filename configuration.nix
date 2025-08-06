@@ -204,6 +204,8 @@ in
       };
     };
 
+    teamviewer.enable = true;
+
     udev.packages = [ usb-storage-pkg ];
   };
 
@@ -252,6 +254,9 @@ in
       doomrunner unstable.gzdoom mangohud azahar melonDS unstable.retroarchFull prismlauncher
       aoc-cli
       wireshark
+      pdfarranger
+      slack
+      element-desktop element-call
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";

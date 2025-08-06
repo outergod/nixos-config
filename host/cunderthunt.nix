@@ -85,10 +85,19 @@
       blender-hip
     ];
   };
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+    };
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+    containers.enable = true;
+
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 
   programs.virt-manager.enable = true;
