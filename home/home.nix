@@ -1,4 +1,4 @@
-{ pkgs, split-monitor-workspaces, ... }:
+{ pkgs, hyprland-plugins, split-monitor-workspaces, ... }:
 
 let
   gamescoped-steam-script = pkgs.writeScriptBin "gamescoped-steam" (builtins.readFile ./gs.sh);
@@ -26,7 +26,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
-    plugins = with pkgs.hyprlandPlugins; [
+    plugins = [
       split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
 
@@ -195,6 +195,8 @@ in
 
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+
+        "$mainMod, grave, exec, ${pkgs.pyprland}/bin/pypr expose"
       ];
 
       bindm = [

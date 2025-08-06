@@ -39,11 +39,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1754447417,
-        "narHash": "sha256-eyw7LSTRTBG4PcoG3Hf92n1fLqolRwP0Cw1RlGz08H8=",
+        "lastModified": 1754471018,
+        "narHash": "sha256-e33bAMeRsQcs9YR8KjtWKAD4cwmM9o3hS5FUGc87gZg=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "3b40bb2e104b70d8c5985bf16d1e1bf1e81371a4",
+        "rev": "16df9c01c4ffcf630ac558f62e52b96984ab48e7",
         "type": "github"
       },
       "original": {
@@ -215,6 +215,36 @@
       "original": {
         "owner": "hyprwm",
         "repo": "Hyprland",
+        "type": "github"
+      }
+    },
+    "hyprland-plugins": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nixpkgs": [
+          "hyprland-plugins",
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland-plugins",
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1754068594,
+        "narHash": "sha256-Yd8+iDw9FBg5agiCVs0aPwaBLSvgZFjjMJcJTAFLZcA=",
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
+        "rev": "ba1823c7870dc2a35e38ec09848a0294dfecc2a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
         "type": "github"
       }
     },
@@ -529,6 +559,7 @@
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprland-plugins": "hyprland-plugins",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "split-monitor-workspaces": "split-monitor-workspaces",
