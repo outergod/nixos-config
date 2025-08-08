@@ -1,4 +1,4 @@
-{ pkgs, hyprland-plugins, split-monitor-workspaces, ... }:
+{ pkgs, hyprland-plugins, split-monitor-workspaces, Hyprspace, ... }:
 
 let
   gamescoped-steam-script = pkgs.writeScriptBin "gamescoped-steam" (builtins.readFile ./gs.sh);
@@ -28,6 +28,7 @@ in
     systemd.enable = false;
     plugins = [
       split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      Hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
     settings = {
@@ -165,8 +166,8 @@ in
 
         "$mainMod, left, split-workspace, -1"
         "$mainMod, right, split-workspace, +1"
-        "$mainMod, up, split-workspace, u"
-        "$mainMod, down, split-workspace, d"
+        "$mainMod, up, overview:open"
+        "$mainMod, down, overview:close"
 
         "$mainMod, 1, split-workspace, 1"
         "$mainMod, 2, split-workspace, 2"

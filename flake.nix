@@ -17,6 +17,10 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@attrs:
     let
@@ -28,16 +32,6 @@
         };
       };
       module-unstable = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; });
-      # home = { config, pkgs, lib, utils, home-manager, ... }: import home-manager.nixosModules.home-manager {
-      #   inherit config;
-      #   inherit pkgs;
-      #   inherit lib;
-      #   inherit utils;
-      #   home-manager.useGlobalPkgs = true;
-      #   home-manager.useUserPackages = true;
-      #   home-manager.users.outergod = ./home/home.nix;
-      #   home-manager.extraSpecialArgs = attrs;
-      # };
     in
       {
         nixosConfigurations = {

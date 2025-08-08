@@ -242,7 +242,7 @@ in
       zen-browser.packages."${system}".default tor-browser brave
       synology-drive-client zapzap lutris dosbox protonplus
       gnome-font-viewer polkit_gnome nautilus
-      mpv celluloid ffmpegthumbnailer audacity picard spotify audacious ffmpeg-full pavucontrol asunder makemkv yt-dlp
+      mpv celluloid ffmpegthumbnailer audacity picard spotify audacious ffmpeg-full pavucontrol asunder makemkv yt-dlp plexamp
       unrar insync
       libheif libheif.out
       rust-analyzer
