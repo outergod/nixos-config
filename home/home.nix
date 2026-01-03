@@ -28,6 +28,7 @@ in
     systemd.enable = false;
     plugins = [
       split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+      hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
       # Hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
@@ -142,10 +143,6 @@ in
         };
       };
 
-      gestures = {
-        workspace_swipe = false;
-      };
-
       xwayland = {
         create_abstract_socket = true;
       };
@@ -166,8 +163,8 @@ in
 
         "$mainMod, left, split-workspace, -1"
         "$mainMod, right, split-workspace, +1"
-        "$mainMod, up, overview:open"
-        "$mainMod, down, overview:close"
+        # "$mainMod, up, overview:open"
+        # "$mainMod, down, overview:close"
 
         "$mainMod, 1, split-workspace, 1"
         "$mainMod, 2, split-workspace, 2"
@@ -197,7 +194,7 @@ in
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
 
-        "$mainMod, grave, exec, ${pkgs.pyprland}/bin/pypr expose"
+        "$mainMod, grave, hyprexpo:expo, toggle"
       ];
 
       bindm = [
@@ -209,6 +206,16 @@ in
         "suppressevent maximize, class:.*"
         "immediate, class:Strangest Aeon"
       ];
+
+      plugin = {
+        hyprexpo = {
+          columns = 3;
+          gap_size = 5;
+          bg_col = "rgb(111111)";
+          workspace_method = "center current";
+          gesture_distance = "300";
+        };
+      };
     };
   };
 
