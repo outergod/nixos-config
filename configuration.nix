@@ -52,7 +52,7 @@ in
   users.users.outergod = {
     description = "Alexander Dorn";
     isNormalUser = true;
-    extraGroups = [ "wheel" "wireshark" ];
+    extraGroups = [ "wheel" "wireshark" "nordvpn" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
@@ -96,9 +96,9 @@ in
     hyprland = {
       enable = true;
       # set the flake package
-      package = hyprland.packages.${pkgs.system}.hyprland;
+      package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       # make sure to also set the portal package, so that they are in sync
-      portalPackage = hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       withUWSM = true;
       xwayland.enable = true;
     };
@@ -127,13 +127,13 @@ in
   services = {
     xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
       xkb = {
         layout = "us";
       };
     };
 
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
     pulseaudio.enable = false;
     tailscale.enable = true;
     printing.enable = true;
@@ -234,12 +234,11 @@ in
     systemPackages = with pkgs; [
       vim jq chezmoi eza bottom procs ripgrep strace git xh curl fd dex libsecret neofetch unzip bc cargo p7zip file john hashcat
       inxi pciutils lshw hwinfo usbutils udiskie encfs vulkan-tools
-      (ventoy-full.override { defaultGuiType = "gtk3"; })
       nodePackages.prettier imagemagick
-      dunst alacritty hyprpaper hyprcursor waybar libnotify waypaper swww shotwell
-      rofi-wayland rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofi-wayland rofimoji
-      webcord-vencord bitwarden
-      zen-browser.packages."${system}".default tor-browser brave
+      dunst alacritty hyprpaper hyprcursor waybar libnotify waypaper swww shotwell hyprshot
+      rofi rofi-bluetooth rofi-calc rofi-power-menu rofi-pulse-select rofi-rbw-wayland rofi-screenshot rofi-systemd rofi-top rofi-vpn rofimoji
+      webcord-vencord bitwarden-desktop
+      zen-browser.packages."${stdenv.hostPlatform.system}".default tor-browser brave
       synology-drive-client zapzap lutris dosbox protonplus
       gnome-font-viewer polkit_gnome nautilus
       mpv celluloid ffmpegthumbnailer audacity picard spotify audacious ffmpeg-full pavucontrol asunder makemkv yt-dlp plexamp
@@ -255,13 +254,16 @@ in
           wlrobs obs-vkcapture input-overlay
         ];
       })
-      doomrunner unstable.gzdoom mangohud azahar melonDS unstable.retroarchFull prismlauncher
+      doomrunner unstable.gzdoom mangohud azahar melonDS prismlauncher retroarch-full
       aoc-cli
       wireshark
       pdfarranger
       slack
       element-desktop element-call
       podman-compose
+      libreoffice-fresh
+      mediawriter
+      efibooteditor
     ];
     pathsToLink = [ "share/thumbnailers" ];
     sessionVariables.NIXOS_OZONE_WL = "1";
@@ -270,8 +272,8 @@ in
   fonts.packages = with pkgs; with nerd-fonts; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
-    fira-code noto-fonts symbols-only
+    noto-fonts-color-emoji
+    fira-code symbols-only
     roboto
   ];
 

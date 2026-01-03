@@ -27,8 +27,8 @@ in
     enable = true;
     systemd.enable = false;
     plugins = [
-      split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
-      Hyprspace.packages.${pkgs.system}.Hyprspace
+      split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+      # Hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
     settings = {
@@ -36,8 +36,8 @@ in
       "debug:full_cm_proto" = true;
       monitor = [
         "desc:LG Display 0x058B, preferred, auto, 1.6"
-        "desc:BNQ BenQ PD3200U V5H01247019, preferred, auto, 2"
-        "desc:BNQ BenQ PD3200U M9H01833019, preferred, auto, 2"
+        "desc:BNQ BenQ PD3200U V5H01247019, preferred, auto-right, 2"
+        "desc:BNQ BenQ PD3200U M9H01833019, preferred, auto-left, 2"
       ];
 
       "$terminal" = "alacritty";
